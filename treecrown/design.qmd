@@ -1,3 +1,19 @@
+---
+title: "Design report: Treecrown"
+authors:
+  - Hayden
+  - Joel
+date: 17/05
+format:
+  html:
+    toc: true
+    number-sections: true
+crossref:
+  fig-title: "Figure"
+  fig-prefix: "Figure"
+---
+
+
 ## Problem statement
 
 

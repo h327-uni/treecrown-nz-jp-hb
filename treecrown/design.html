@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2026-05-17">
 
-<title>design</title>
+<title>Design report: your-package-name</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -41,24 +42,66 @@ ul.task-list li input[type="checkbox"] {
 
 </head>
 
-<body class="fullcontent quarto-light">
+<body class="quarto-light">
 
 <div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
-
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#problem-statement" id="toc-problem-statement" class="nav-link active" data-scroll-target="#problem-statement"><span class="header-section-number">1</span> Problem statement</a></li>
+  <li><a href="#pipeline-diagram" id="toc-pipeline-diagram" class="nav-link" data-scroll-target="#pipeline-diagram"><span class="header-section-number">2</span> Pipeline diagram</a></li>
+  <li><a href="#expected-output" id="toc-expected-output" class="nav-link" data-scroll-target="#expected-output"><span class="header-section-number">3</span> Expected output</a></li>
+  <li><a href="#key-design-choices" id="toc-key-design-choices" class="nav-link" data-scroll-target="#key-design-choices"><span class="header-section-number">4</span> Key design choices</a></li>
+  <li><a href="#roles-and-next-function" id="toc-roles-and-next-function" class="nav-link" data-scroll-target="#roles-and-next-function"><span class="header-section-number">5</span> Roles and next function</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">6</span> References</a></li>
+  </ul>
+</nav>
+</div>
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Design report: your-package-name</h1>
+</div>
 
 
 
-<section id="problem-statement" class="level2">
-<h2 class="anchored" data-anchor-id="problem-statement">Problem statement</h2>
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Authors</div>
+    <div class="quarto-title-meta-contents">
+             <p>Partner A </p>
+             <p>Partner B </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">May 17, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="problem-statement" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="problem-statement"><span class="header-section-number">1</span> Problem statement</h2>
 <p>A walkable urban environment requires more than built infrastructure. In many Auckland locations, the quality of walkways is inhibited by the lack of natural tree cover that provides critical protection from wind, sun and rain. This project fetches tree cover for selected Auckland suburbs and automates the calculation process by providing percentage values of tree cover. This tree cover value will be calculated through LiDAR data, specifically the difference between Digital Elevation Models (DEMs) and Digital Surface Models (DSM), assuming that all pixels with a value of less than or equal to 10 metres represent trees or similar ecological coverage. Finally, this project will return a percentage of tree cover on a given route and a set buffer area, acting as a representation for pedestrian shade. This will be matched with a figure of shaded percentage of three selected suburbs.</p>
 <p>Relevant research has been performed by Auckland Council in 2021, by Golubiewski et al.&nbsp;This analysis acts as the foundation for our work, as it likewise uses LiDAR data to understand the Auckland forestry canopy. There are three key differences between the work of Golubiewski et al and ours. The first of which is the time scale of which the analysis takes place. This Auckland Council report uses LiDAR data from 2018, which is already 6 years out from the latest publicly accessible LiDAR information. This time scale is critical, as Auckland Council has a goal to increase urban tree canopy to 30% by 2050 (Auckland’s Urban Ngahere (Forest) Strategy, 2019). It is important to see if we are on track to improve from the 18% canopy cover found in 2019.</p>
 <p>Secondly, our analysis is unique for its direct mapping to urban footpaths. We will be looking specifically at footpaths for two reasons: firstly, it provides critical constraints to our project, as we lack the time or resources to apply our analysis to the entirety of Auckland. Secondly, specifically looking at footpaths provides a unique interpretation of the LiDAR data that has the potential to be useful for people in their own environments. Small-scale information on the areas most critically in need of coverage is the focus of this package,</p>
 <p>Finally, our project will be deployed directly into a PiPy package. This further enhances its use for everyday people, as opposed to a council report. Our package will allow for a level of individualisation, ensuring users can explore their own areas of interest. One specific example of this is a user inputting a location on a walkway that is local to them, to provide them with a likely estimate of environmental exposure if they were to walk along that pathway.</p>
 </section>
-<section id="pipeline-diagram" class="level2">
-<h2 class="anchored" data-anchor-id="pipeline-diagram">Pipeline diagram</h2>
+<section id="pipeline-diagram" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="pipeline-diagram"><span class="header-section-number">2</span> Pipeline diagram</h2>
 <p>The package takes a tree cover layer as a geodataframe and turns it into a numeric representation of tree cover along a route. <a href="#fig-pipeline" class="quarto-xref">Figure&nbsp;1</a> shows the three functions and how data flows between them.</p>
 <div id="fig-pipeline" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -71,8 +114,8 @@ Figure&nbsp;1: Pipeline from input data through the three functions to the final
 </figure>
 </div>
 </section>
-<section id="expected-output" class="level2">
-<h2 class="anchored" data-anchor-id="expected-output">Expected output</h2>
+<section id="expected-output" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="expected-output"><span class="header-section-number">3</span> Expected output</h2>
 <p><a href="#fig-output" class="quarto-xref">Figure&nbsp;2</a> is the sketch of what the demo notebook will produce on the last cell.</p>
 <div id="fig-output" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -85,20 +128,20 @@ Figure&nbsp;2: Sketch of the expected demo output (rough map of the route colour
 </figure>
 </div>
 </section>
-<section id="key-design-choices" class="level2">
-<h2 class="anchored" data-anchor-id="key-design-choices">Key design choices</h2>
+<section id="key-design-choices" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="key-design-choices"><span class="header-section-number">4</span> Key design choices</h2>
 <ul>
 <li><strong>CRS</strong>: we use EPSG:2193 (NZTM) because it is the most accurate for geospatial data in New Zealand.</li>
 <li><strong>Data pattern</strong>: data is fetched through an API due to the significant file sizes of geopackages.</li>
 </ul>
 </section>
-<section id="roles-and-next-function" class="level2">
-<h2 class="anchored" data-anchor-id="roles-and-next-function">Roles and next function</h2>
+<section id="roles-and-next-function" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="roles-and-next-function"><span class="header-section-number">5</span> Roles and next function</h2>
 <p>Hayden will own def load_canopy() for the first draft. Joel will focus on def canopy_coverage(). Both partners review all code.</p>
 <p>Next priority to implement after today’s lab: linking API calls to get data in a computationally reasonable way.</p>
 </section>
-<section id="references" class="level2">
-<h2 class="anchored" data-anchor-id="references">References</h2>
+<section id="references" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="references"><span class="header-section-number">6</span> References</h2>
 <p>Auckland’s Urban Ngahere (Forest) Strategy. (2019). In Auckland Council. https://www.aucklandcouncil.govt.nz/content/dam/ac/docs/plans/environmental-strategy/urban-ngahere-forest-strategy.pdf</p>
 <p>Golubiewski, N., Lawrence, G., Zhao, J., &amp; Bishop, C. (2020). Auckland’s Urban Forest Canopy Cover: State and Change: Revised April 2021. In Auckland Council (2020/009-2). https://knowledgeauckland.org.nz/media/2066/tr2020-009-2-aucklands-urban-forest-canopy-cover-2013-2016-2018-revised-april-2021.pdf</p>
 </section>
