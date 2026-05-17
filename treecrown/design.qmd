@@ -3,7 +3,7 @@ title: "Design report: Treecrown"
 authors:
   - Hayden
   - Joel
-date: 17/05
+date: today
 format:
   html:
     toc: true
