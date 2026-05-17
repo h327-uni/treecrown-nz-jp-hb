@@ -36,7 +36,7 @@ Finally, our project will be deployed directly into a PiPy package. This further
 The package takes a tree cover layer as a geodataframe and turns it into a numeric representation of tree cover along a route.
 @fig-pipeline shows the three functions and how data flows between them.
 
-![Pipeline from input data through the three functions to the final deliverable.](treecrown/docs/pipeline.png){#fig-pipeline width=80%}
+![Pipeline from input data through the three functions to the final deliverable.](docs/pipeline.png){#fig-pipeline width=80%}
 
 
 
@@ -47,7 +47,7 @@ The package takes a tree cover layer as a geodataframe and turns it into a numer
 
 @fig-output is the sketch of what the demo notebook will produce on the last cell.
 
-![Sketch of the expected demo output (rough map of the route coloured by exposure).](treecrown/docs/Output.png){#fig-output width=80%}
+![Sketch of the expected demo output (rough map of the route coloured by exposure).](docs/Output.png){#fig-output width=80%}
 
 
 
