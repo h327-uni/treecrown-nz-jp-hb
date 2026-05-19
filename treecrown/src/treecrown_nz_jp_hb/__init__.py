@@ -1,4 +1,4 @@
-"""Your one-line package description."""
+"""This package will show a coverage percentage for three suburbs, and a shaded walk map for one route."""
 
 from __future__ import annotations
 # import pandas as pd
