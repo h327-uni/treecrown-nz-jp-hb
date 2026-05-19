@@ -19,3 +19,5 @@ def canopy_coverage(area_gdf):
 def route_shade(route_gdf, buffer_m):
     """Buffers each edge of a route by a given distance (in metres) and returns the canopy fraction within that buffer, a proxy for pedestrian shade."""
     raise NotImplementedError
+
+test
